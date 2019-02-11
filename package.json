@@ -1,0 +1,16 @@
+{
+  "name": "resizeimage",
+  "version": "1.0.0",
+  "description": "Rezise image on the fly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicola Olivetto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "sharp": "^0.21.3"
+  }
+}
