@@ -7,7 +7,6 @@ const path = require('path');
 const request = require('request');
 const buffer = require('./buffer');
 
-
 const serveResized = (event, context) => {
     const url = event.query.url;
 
@@ -24,6 +23,7 @@ const serveResized = (event, context) => {
 
         if (download) {
             headers['content-disposition'] = `attachment; filename="${name}"`;
+            context.setHeader('Content-Disposition', headers['content-disposition']);
         } else {
             headers['content-disposition'] = `inline; filename="${name}"`;
         }
@@ -44,6 +44,7 @@ const serveResized = (event, context) => {
                     const height = event.query.height ? Number(event.query.height) : null;
 
                     context.type(`image/${format}`);
+
                     buffer(body, format, width, height).pipe(context);
                 } else {
                     context
@@ -57,11 +58,6 @@ const serveResized = (event, context) => {
 }
 
 server.get('/', serveResized);
-
-
-
-// setTimeout(function(){ resize(copyPath,format, width, height).pipe(res); }, 3000);
-
 
 server.listen(5000, () => {
     console.log('Server started!');
