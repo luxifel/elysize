@@ -19,7 +19,7 @@ make start
 Get request on your server application endpoint.
 
 ```bash
-http://localhost:9000/?url=https://www.philosophyofficial.com/media/catalog/product/cache/0/582x742/FFFFFF/GIMPJAB13TV530-0108-1_3.jpg&format=webp&width=200
+http://localhost:5000/?url=https://www.philosophyofficial.com/media/catalog/product/cache/0/582x742/FFFFFF/GIMPJAB13TV530-0108-1_3.jpg&format=webp&width=200
 ```
 
 ### Who do I talk to?

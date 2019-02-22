@@ -63,6 +63,6 @@ server.get('/', serveResized);
 // setTimeout(function(){ resize(copyPath,format, width, height).pipe(res); }, 3000);
 
 
-server.listen(9000, () => {
+server.listen(5000, () => {
     console.log('Server started!');
 });

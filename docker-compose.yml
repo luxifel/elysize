@@ -1,0 +1,6 @@
+version: '3.1'
+services:
+  node:
+    build: ./
+    ports:
+      - ${RESIZE_PORT}:5000
