@@ -11,7 +11,6 @@ const parser = (req) => {
     let pathname = requestUrl.pathname;
     let extension = path.extname(pathname);
     let cache = regexCache.test(pathname) || false;
-
     let data = {
         domain : req.header('Referer'),
         url : false,
@@ -19,19 +18,19 @@ const parser = (req) => {
         name : req.query.name ? (req.query.name + extension) : path.basename(pathname),
         download : Boolean(req.query.download) || false,
         format : req.query.format || 'jpg',
-        cacheFile : false,
+        cacheFile : cache,
         api:true
     };
 
     if (url){
         data.url = true;
+        data.requestUrl = url;
         data.width = req.query.w ? Number(req.query.w) : null;
         data.height = req.query.h ? Number(req.query.h) : null;
     }
 
-    if (cache){
-        const regexParseUrlCache = /\/media\/catalog\/(?<entity>\w+)\/cache\/\w+\/(?<image>\w+)\/(?<width>\d+)x(?<heigh>\w*)\/\w{20,}(?<path>\/.+)/gm;
-
+    if (data.cacheFile){
+        const regexParseUrlCache = /\/media\/catalog\/(?<entity>[a-z]+)\/cache\/\w+\/(?<image>[a-z]+)?\/?(?<width>\d+)x(?<heigh>\w*)(?<path>\/.+)/gm;
         pathname.match(regexParseUrlCache);
         data.cacheFile = true;
         data.width = RegExp.$3 ? Number(RegExp.$3) : null;

@@ -26,7 +26,7 @@ const serveResized = (req, res) => {
 
         const domain = config(Urldata);
 
-        let url = (Urldata.url) ? Urldata.url : domain + Urldata.pathname;
+        let url = (Urldata.url) ? Urldata.requestUrl : domain + Urldata.pathname;
 
         if (Urldata.api) {
             request.get({
