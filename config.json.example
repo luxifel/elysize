@@ -1,0 +1,12 @@
+{
+    "project": "myProject",
+    "source":{
+        "hub":"local",  // local:string | s3 | cdn | domain:string
+        "path":"./data",
+        "auth":"false"
+    },
+    "type":{
+        "rule" : "regex",  // regex:string | custom:array
+        "value": "/\/media\/catalog\/(?<entity>[a-z]+)\/cache\/\w+\/(?<image>[a-z]+)?\/?(?<width>\d+)x(?<heigh>\w*)(?<path>\/.+)/gm"   
+    }
+}

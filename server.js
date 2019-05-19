@@ -4,10 +4,10 @@ const express = require('express');
 const request = require('request');
 const helmet = require('helmet');
 const cors = require('cors');
-const parser = require('./parser');
-const buffer = require('./buffer');
-const header = require('./header');
-const config = require('./config');
+const parser = require('.parser/parser');
+const buffer = require('.buffer/buffer');
+const header = require('./buffer/header');
+const config = require('./config/config');
 const server = express();
 
 const serveResized = (req, res) => {
@@ -24,7 +24,7 @@ const serveResized = (req, res) => {
             'Expires': headers['Expires']
         });
 
-        const domain = config(Urldata);
+        const domain = config("domain");
 
         let url = (Urldata.url) ? Urldata.requestUrl : domain + Urldata.pathname;
 

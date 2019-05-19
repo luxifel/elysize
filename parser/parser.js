@@ -1,10 +1,12 @@
 const Url = require('url');
 const path = require('path');
+const type = require('./type');
 
 
 const parser = (req) => {
 
-    const regexCache = /\/cache\//gm;
+///TO DO: refactor.....
+
 
     let url = req.query.url;
     let requestUrl = req.query.url ? Url.parse(url) : Url.parse(req.originalUrl);
