@@ -14,7 +14,7 @@ const source = () => {
         case cdn:
         break;        
         default:
-            data.domain = null;
+            data.domain = false;
         break;        
     }
     

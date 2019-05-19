@@ -2,13 +2,13 @@ const config = require('../config/config');
 
 const type = (data) => {
 
-    //parse url based on type
-
-
     let config = config("type");
-    
-    switch (config.type.rule){
+
+    switch (config.rule){
         case "regex":
+            data.pathname.match(config.value);
+            data.width = RegExp.$1 ? Number(RegExp.$1) : null;
+            data.height = RegExp.$2 ? Number(RegExp.$2) : null;
         break;
         case "custom":
         break;
