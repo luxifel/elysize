@@ -1,0 +1,13 @@
+{
+    "project": "myProject",
+    "source":{
+        "hub":"local",
+        "path":"/home/node/app/media",
+        "auth":"false",
+        "domain": "www.philosophyofficial.com"
+    },
+    "type":{
+        "rule" : "regex", 
+        "value": ""   
+    }
+}

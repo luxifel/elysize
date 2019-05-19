@@ -14,7 +14,6 @@ const serveResized = (req, res) => {
         const Urldata = parser(req);
         const headers = Urldata.header;
 
-        console.log(Urldata);
         res.type(headers['ContentType']);
         res.set({
             'content-disposition': headers['content-disposition'],
