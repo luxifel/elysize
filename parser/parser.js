@@ -14,7 +14,7 @@ const parser = (req) => {
     let source = Source();
 
     let data = {
-        domain : source.domain,
+        domain : url || source.domain,
         requestDomain: req.header('Referer'),
         requestUrl : requestUrl,
         pathname : pathname,
