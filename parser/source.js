@@ -1,17 +1,17 @@
-const config = require('../config/config');
+const Config = require('../config/config');
 
 const source = () => {
-    let config = config();
+    let config = Config();
     let data = {};
     data.path = config.source.path;
     
     switch (config.source.auth){
-        case domain:
+        case "domain":
             data.domain = config.source.domain;
         break;
-        case s3:
+        case "s3":
         break;
-        case cdn:
+        case "cdn":
         break;        
         default:
             data.domain = false;

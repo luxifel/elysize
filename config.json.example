@@ -1,9 +1,10 @@
 {
     "project": "myProject",
     "source":{
-        "hub":"local",  // local:string | s3 | cdn | domain:string
-        "path":"./data",
-        "auth":"false"
+        "hub":"local",   // s3 || cdn || custom
+        "path":"patabsolute/space/modules/elysize/media",
+        "auth":"false",
+        "domain": ""
     },
     "type":{
         "rule" : "regex",  // regex:string | custom:array

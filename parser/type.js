@@ -1,14 +1,14 @@
-const config = require('../config/config');
+const Config = require('../config/config');
 
 const type = (data) => {
 
-    let config = config("type");
+    let config = Config();
 
-    switch (config.rule){
+    switch (config.type.rule){
         case "regex":
             data.pathname.match(config.value);
-            data.width = RegExp.$1 ? Number(RegExp.$1) : null;
-            data.height = RegExp.$2 ? Number(RegExp.$2) : null;
+            data.width = RegExp.$1 ? Number(RegExp.$1) : data.width;
+            data.height = RegExp.$2 ? Number(RegExp.$2) : data.height;
         break;
         case "custom":
         break;

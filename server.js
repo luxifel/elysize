@@ -4,25 +4,29 @@ const express = require('express');
 const request = require('request');
 const helmet = require('helmet');
 const cors = require('cors');
-const parser = require('.parser/parser');
-const buffer = require('.buffer/buffer');
+const parser = require('./parser/parser');
+const buffer = require('./buffer/buffer');
 const server = express();
 
 const serveResized = (req, res) => {
 
     if (req.originalUrl !== '/favicon.ico') {
         const Urldata = parser(req);
+        const headers = Urldata.header;
 
-        res.type( Urldata.headers['ContentType']);
+        console.log(Urldata);
+        res.type(headers['ContentType']);
         res.set({
-            'content-disposition':  Urldata.headers['content-disposition'],
-            'Cache-Control':  Urldata.headers['Cache-Control'],
-            'Expires':  Urldata.headers['Expires']
+            'content-disposition': headers['content-disposition'],
+            'Cache-Control': headers['Cache-Control'],
+            'Expires': headers['Expires']
         });
+
+        let url = Urldata.url;
 
         if (Urldata.domain) {
             request.get({
-                Urldata.url,
+                url,
                 encoding: null
             }, (error, response, body) => {
                 if (error) {
@@ -32,9 +36,9 @@ const serveResized = (req, res) => {
                 }
             });
         } else {
-            buffer(Urldata.url, Urldata.format, Urldata.width, Urldata.height).pipe(res);
-        }
-    }
+            buffer(url, Urldata.format, Urldata.width, Urldata.height).pipe(res);
+        } 
+    } 
 };
 
 server.use(helmet());
